@@ -17,6 +17,6 @@ def get_data(data: str = Form(...)):
 
 @app.get('/', response_class=HTMLResponse)
 def index(request: Request):
-    return templates.TemplateResponse('item.html', {'request': request})
+    return templates.TemplateResponse('show.html', {'request': request})
    
 
