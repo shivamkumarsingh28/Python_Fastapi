@@ -1,5 +1,4 @@
 from fastapi import FastAPI, Request, Form
-from typing import Annotated
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
