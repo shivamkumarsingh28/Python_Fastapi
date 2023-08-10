@@ -12,11 +12,11 @@ templates = Jinja2Templates(directory="Templates")
 
 
 @app.post('/')
-def post_data(data: str = Form(...)):
+def get_data(data: str = Form(...)):
     return f'{data}'
 
 @app.get('/', response_class=HTMLResponse)
-def main(request: Request):
+def index(request: Request):
     return templates.TemplateResponse('item.html', {'request': request})
    
 
