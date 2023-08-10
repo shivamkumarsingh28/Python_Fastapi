@@ -1,7 +1,23 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request, Form
+from typing import Annotated
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+from fastapi.responses import HTMLResponse
 
 app = FastAPI()
 
-@app.get("/saeeam")
-def root():
-   return {"message": "Hello World"}
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+
+templates = Jinja2Templates(directory="templates")
+
+
+@app.post('/')
+def post_data(data: str = Form(...)):
+    return f'{data}'
+
+@app.get('/', response_class=HTMLResponse)
+def main(request: Request):
+    return templates.TemplateResponse('item.html', {'request': request})
+   
+
